@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire DWWM</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        *:focus {
+            outline: none;
+        }
+        
+        body {
+            background-color: #a9d7e9;
+        }
+        
+        input {
+            padding: 5px;
+            height: 20px;
+            border-radius: 5px;
+            border: none;
+            border: 1px solid #00000000;
+        }
+        
+        input:hover,
+        select:hover,
+        textarea:hover {
+            border: 1px solid #1173f3;
+        }
+        
+         ::placeholder {
+            color: black;
+            text-indent: 5px;
+            transform: .3s ease;
+        }
+        
+        h1 {
+            text-align: center;
+            padding: 30px;
+            text-transform: capitalize;
+        }
+        
+        form {
+            background-color: #f3f3f3;
+            width: 60%;
+            max-width: 800px;
+            border-radius: 10px;
+            padding: 50px 30px;
+            margin: auto;
+            display: grid;
+        }
+        
+        .name {
+            display: flex;
+            align-items: center;
+        }
+        
+        .sous1,
+        .sous2 {
+            width: 50%;
+            padding: 15px;
+        }
+        
+        .sous1 {
+            text-align: right;
+        }
+        
+        .validate {
+            width: 100px;
+            height: 30px;
+            background-color: #6ba2ce;
+            border-radius: 5px;
+            color: white;
+            border: none;
+            margin: auto;
+            cursor: pointer;
+            transition: .4s ease;
+        }
+        
+        .validate:hover {
+            background-color: #1173f3;
+        }
+        
+        select {
+            width: 100%;
+            max-width: 250px;
+            height: 30px;
+            padding-left: 10px;
+        }
+        
+        textarea {
+            width: 100%;
+            max-width: 200px;
+            border-radius: 5px;
+            padding: 5px;
+            border: 1px solid #00000000;
+        }
+        
+        span {
+            vertical-align: super;
+            padding-left: 10px;
+            margin-top: 1px;
+        }
+        
+        #inputAnswer {
+            padding: 20px 2px;
+            display: grid;
+            gap: 30px;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Formulaire DWWM</h1>
+    <form id="frm">
+        <div class="name">
+            <div class="sous1">
+                Nom
+            </div>
+            <div class="sous2">
+                <input type="text" class="userName" placeholder="Entrez votre nom">
+            </div>
+        </div>
+        <div class="name">
+            <div class="sous1">
+                Email
+            </div>
+            <div class="sous2"><input type="email" class="email" placeholder="Entrez votre email"></div>
+        </div>
+        <div class="name">
+            <div class="sous1">
+                Indiquez votre satisfaction au cous de 1 à 10
+            </div>
+            <div class="sous2"><input type="number" class="number" placeholder="numéro de 1 à 10"></div>
+        </div>
+        <div class="name">
+            <div class="sous1">
+                Qui est votre Coach?
+            </div>
+            <div class="sous2">
+                <select class="coachName">
+                    <option placeholder="Birante">Birante</option>
+                    <option placeholder="Birante">Mamadou</option>
+                    <option placeholder="Birante">Malick</option>
+                </select>
+            </div>
+        </div>
+        <div class="name">
+            <div class="sous1">
+                Décrivez votre expérience jusque là
+            </div>
+            <div class="sous2">
+                <textarea name="opinion" class="message" col="20" rows="4" id="textarea" placeholder="Décrivez votre expérience ici ..."></textarea>
+            </div>
+        </div>
+
+        <!-- Button of answer inputs -->
+        <input class="validate" value="validate" type="submit" onclick="toggleDisplay()">
+        <!-- Onclick EventListener output division after -->
+        <div id="inputAnswer" style="text-align: center;"></div>
+    </form>
+
+
+    <!-- Script for getting inputs elemnets Values and putting them in document -->
+    <script>
+        //Creating the function //
+        function toggleDisplay() {
+            //input variables creating////////
+            var x = document.forms["frm"];
+            //input values stocker variable create///////
+            let text = "";
+            //Loop for increment, stock and show input values //////
+            for (let i = 0; i < x.length - 1; i++) {
+                //text values toggle ////////
+                text += "<span>" + x.elements[i].value + "</span>";
+                //Output the value 
+                document.getElementById("inputAnswer").innerHTML = text;
+            }
+            //end of the for loop
+        }
+    </script>
+    <!-- End of the script -->
+
+</body>
+
+</html>
